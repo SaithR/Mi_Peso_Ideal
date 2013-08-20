@@ -10,8 +10,10 @@ class AlturaController < ApplicationController
 			#Revisar que el valor dado sea mayor a 0
 			if @fAlt<=0
 				render "altura/menor_a_cero"
-			else			
+			elsif @unidad=="in"||@unidad=="cm"			
 				render "altura/peso"
+			else
+				render "altura/error_unidades"
 			end
 		#Capturar el error en caso de entrada no numerica y desplegar el mensaje de error
 		rescue ArgumentError

@@ -1,10 +1,24 @@
-#language: es
-Característica: Entrada de unidades de altura
-	Como usuario 
-	Quiero seleccionar las unidades de entrada de altura (cm o inch) 
-	Para aplicar los métodos de cálculo correctamente
+#language: en
+Feature: Entrada de unidades de altura
+	In order to calculate my ideal weight
+	As a user 
+	I want to input my height unit 
 
-    Escenario: Seleccion de unidad de altura
-    	Dado que un usuario quiere seleccionar las unidades de su altura 
-    	Cuando la entrada es valida 
-    	Entonces el sistema debe aceptar la entrada de unidades.
+
+	Scenario: Entrada in
+		Given I am on the home page
+		When I fill in "altura" with "200"
+		And I select "in" in "unidad"
+		And I click "Calcular peso ideal"
+		Then I should see "Su peso ideal es:"
+		
+	Scenario: Entrada cm
+		Given I am on the home page
+		When I fill in "altura" with "200"
+		And I select "cm" in "unidad"
+		And I click "Calcular peso ideal"
+		Then I should see "Su peso ideal es:"
+		
+	Scenario: Entrada invalida
+		Given I am on give an invalid unit via through an url
+		Then I should see "La unidad seleccionada debe ser in o cm"
