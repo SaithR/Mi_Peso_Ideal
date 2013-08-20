@@ -1,10 +1,18 @@
-#language: es
-Característica: Calculo del peso ideal Devine
-	Como usuario 
-	Quiero usar la formula Devine 
-	Para calcular mi peso ideal.
+#language: en
+Feature: Calculo por Devine
+	In order to calculate my ideal weight
+	As a user 
+	I want to use the Devine formula
 
-	Escenario: Calculo del peso por Devine
-		Dado que un usuario quiere conocer su peso ideal por Devine Cuando la entrada de altura es valida 
-		Y esta en pulgadas 
-		Entonces el sistema debe calcular el peso para hombre y mujer segun la formula de Devine.
+	Scenario: Calculo por Devine
+		Given I am on the home page
+		When I fill in "altura" with "170"
+		And I select "cm" in "unidad"
+		And I click "Calcular peso ideal"
+		Then I should see "Su peso ideal es:"
+		And I should see "Devine"
+		And I should see "145.06"
+		And I should see "135.16"
+		And I should see "65.8"
+		And I should see "61.31"
+	
