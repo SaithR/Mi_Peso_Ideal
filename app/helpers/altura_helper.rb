@@ -1,0 +1,2 @@
+module AlturaHelper
+end

@@ -1,0 +1,18 @@
+
+<h1>Tu peso ideal</h1>
+<%= form_tag({:controller => "altura", :action => "recibir_altura"}, :method => "get",:multipart => true) do%>
+  <p>
+	<%= label_tag(:altura,"Altura") %><br>
+    <%= text_field_tag (:altura) %>
+  </p>
+  
+  <p>
+	<%= label_tag(:unidad, "Unidad") %><br>
+    <%= select_tag(:unidad, options_for_select([["in", "in"], ["cm", "cm"]])) %>		
+  </p>
+ 
+  <p>
+    <%= submit_tag("Calcular peso ideal") %>
+  </p>
+<% end %>
+
