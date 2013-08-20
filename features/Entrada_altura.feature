@@ -1,20 +1,25 @@
-#language: es
-Característica: Entrada de Altura
-	Como usuario 
-	Quiero proporcionar mi altura 
-	Para obtener el calculo de mi peso ideal
+#language :en
+Feature: Entrada de Altura
+	In order to calculate my ideal weight
+	As a user 
+	I want to input my height 
 
-	Escenario: Entrada valida
-		Dado que un usuario quiere ingresar su altura
-		Cuando es positiva 
-		Entonces el sistema la acepta.
-	Escenario: Entrada invalida
-		Dado que un usuario quiere ingresar su altura 
-		Cuando es negativa 
-		Entonces el sistema no la acepta 
-		Y despliega un mensaje de error.
-	Escenario: Entrada invalida
-		Dado que un usuario quiere ingresar su altura 
-		Cuando no es numerica 
-		Entonces el sistema no la acepta 
-		Y despliega un mensaje de error. 
+	Scenario: Entrada valida
+		Given I am on the home page
+		When I fill in "altura" with "200"
+		And I click "Calcular peso ideal"
+		Then I should see "Su peso ideal es:"
+	Scenario: Entrada negativa	
+		Given I am on the home page
+		When I fill in "altura" with "-20"
+		And I click "Calcular peso ideal"
+		Then I should see "La altura debe ser un valor mayor a 0"
+	Scenario: Entrada no numerica	
+		Given I am on the home page
+		When I fill in "altura" with "abc"
+		And I click "Calcular peso ideal"
+		Then I should see "La altura debe ser un valor numerico"		
+	Scenario: Sin entrada	
+		Given I am on the home page
+		When I click "Calcular peso ideal"
+		Then I should see "La altura debe ser un valor numerico"
