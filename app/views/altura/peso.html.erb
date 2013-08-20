@@ -1,3 +1,32 @@
 <h1>Su peso ideal</h1>
+<p>Su altura es:</p>
+<table>
+	<tr>
+		<th>Cm</th>
+		<th>In</th>
+	</tr>			
+	<tr>		
+		<td><%= @cm.round(2) %></td>
+		<td><%= @in.round(2) %></td>
+	</tr>
+</table>
 <p>Su peso ideal es:</p>
+
+<table>
+	<tr>
+		<th>Metodo</th>
+		<th>Hombre-lb</th>
+		<th>Mujer-lb</th>
+		<th>Hombre-kg</th>
+		<th>Mujer-kg</th>
+	</tr>			
+	<tr>
+		<td>Devine</td>
+		<td><p><%= @devineHLb.round(2) %></p></td>
+		<td><p><%= @devineMLb.round(2) %></p></td>
+		<td><p><%= @devineHKg.round(2) %></p></td>
+		<td><p><%= @devineMKg.round(2) %></p></td>
+	</tr>
+</table>
+
 <%= link_to "Volver", {:controller => "altura", :action => "index"} %>
