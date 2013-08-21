@@ -5,20 +5,23 @@ class AlturaController < ApplicationController
 		
 		begin
 			#Convertir a número, si el valor no es numerico lanza error
-			@fAlt=Float(@altura)		
+			@fAltura=Float(@altura)		
 			#Si no lanzo error es porque se convirtio a numero correctamente
 			#Revisar que el valor dado sea mayor a 0
-			if @fAlt<=0
+			if @fAltura<=0
 				render "altura/menor_a_cero"
 			elsif @unidad=="in"||@unidad=="cm"	
 				if @unidad=="cm"
-					@cm=@fAlt
-					@in=aIn(@cm)
+					@cms=@fAltura
+					@inches=toInches(@fAltura)
 				else					
-					@in=@fAlt
-					@cm=aCm(@in)
+					@inches=@fAltura
+					@cms=toCms(@fAltura)
 				end
-				calcularDevine(@in)
+				calcularBMI(@inches)
+				calcularDevine(@inches)
+				calcularRobinson(@inches)
+				calcularMiller(@inches)
 				render "altura/peso"
 			else
 				render "altura/error_unidades"
@@ -29,22 +32,41 @@ class AlturaController < ApplicationController
 		end
 	end
 	
-	def aIn(cm)
-		return cm/2.54
+	def toInches(cms)
+		return cms/2.54
 	end
 	
-	def aCm(inc)
-		return 2.54*inc
-	end
-		
-	def calcularDevine(inc)
-		@devineHLb=110+5.06*(inc-60)
-		@devineMLb=100.1+5.06*(inc-60)
-		@devineHKg=aKg(@devineHLb)
-		@devineMKg=aKg(@devineMLb)
+	def toCms(inches)
+		return 2.54*inches
 	end
 	
-	def aKg(lb)
+	def calcularBMI(inches)
+		@BMILb=20*(inches*inches)/703
+		@BMIKg=toKgs(@BMILb)
+	end
+
+	def calcularDevine(inches)
+		@devineHLb=110+5.06*(inches-60)
+		@devineMLb=100.1+5.06*(inches-60)
+		@devineHKg=toKgs(@devineHLb)
+		@devineMKg=toKgs(@devineMLb)
+	end
+
+	def calcularRobinson(inches)
+		@robinsonHLb=114.4+4.18*(inches-60)
+		@robinsonMLb=107.8+3.74*(inches-60)
+		@robinsonHKg=toKgs(@robinsonHLb)
+		@robinsonMKg=toKgs(@robinsonMLb)
+	end
+
+	def calcularMiller(inches)
+		@millerHLb=123.64+3.10*(inches-60)
+		@millerMLb=116.82+2.99*(inches-60)
+		@millerHKg=toKgs(@millerHLb)
+		@millerMKg=toKgs(@millerMLb)
+	end
+	
+	def toKgs(lb)
 		return 0.45359237*lb
 	end
 	

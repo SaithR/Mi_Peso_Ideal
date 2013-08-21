@@ -2,30 +2,55 @@
 <p>Su altura es:</p>
 <table>
 	<tr>
-		<th>Cm</th>
-		<th>In</th>
+		<td><%= @cms.round(2) %></td>
+		<th>cm</th>
 	</tr>			
 	<tr>		
-		<td><%= @cm.round(2) %></td>
-		<td><%= @in.round(2) %></td>
+		<td><%= @inches.round(2) %></td>
+		<th>in</th>
 	</tr>
 </table>
 <p>Su peso ideal es:</p>
 
-<table>
+<table border="3" cellspacing="3">
 	<tr>
-		<th>Metodo</th>
-		<th>Hombre-lb</th>
-		<th>Mujer-lb</th>
-		<th>Hombre-kg</th>
-		<th>Mujer-kg</th>
+		<th width="100px" rowspan=2>Método</th>
+		<th colspan=2>Lb</th>
+		<th colspan=2>Kg</th>
+	</tr>
+	<tr>
+		<th width="100px">Hombre</th>
+		<th width="100px">Mujer</th>
+		<th width="100px">Hombre</th>
+		<th width="100px">Mujer</th>
 	</tr>			
-	<tr>
+	<tr align="center">
+		<td>BMI</td>
+		<td><p><%= @BMILb.round(2) %></p></td>
+		<td><p><%= @BMILb.round(2) %></p></td>
+		<td><p><%= @BMIKg.round(2) %></p></td>
+		<td><p><%= @BMIKg.round(2) %></p></td>
+	</tr>
+	<tr align="center">
 		<td>Devine</td>
 		<td><p><%= @devineHLb.round(2) %></p></td>
 		<td><p><%= @devineMLb.round(2) %></p></td>
 		<td><p><%= @devineHKg.round(2) %></p></td>
 		<td><p><%= @devineMKg.round(2) %></p></td>
+	</tr>
+	<tr align="center">
+		<td>Robinson</td>
+		<td><p><%= @robinsonHLb.round(2) %></p></td>
+		<td><p><%= @robinsonMLb.round(2) %></p></td>
+		<td><p><%= @robinsonHKg.round(2) %></p></td>
+		<td><p><%= @robinsonMKg.round(2) %></p></td>
+	</tr>
+	<tr align="center">
+		<td>Miller</td>
+		<td><p><%= @millerHLb.round(2) %></p></td>
+		<td><p><%= @millerMLb.round(2) %></p></td>
+		<td><p><%= @millerHKg.round(2) %></p></td>
+		<td><p><%= @millerMKg.round(2) %></p></td>
 	</tr>
 </table>
 
