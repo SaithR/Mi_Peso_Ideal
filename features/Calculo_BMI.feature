@@ -1,11 +1,17 @@
-#language: es
-Característica: Cálculo del peso ideal BMI
-	Como usuario 
-	Quiero usar la formula BMI para
-	Calcular mi peso ideal.
+#language: en
+Feature: Calculo por BMI
+	In order to calculate my ideal weight
+	As a user 
+	I want to use the BMI formula
 
-	Escenario: Calculo del peso por BMI
-		Dado que un usuario quiere conocer su peso ideal por BMI 
-		Cuando la entrada de altura es valida 
-		Y esta en pulgadas 
-		Entonces el sistema debe calcular el peso segun la formula que BMI propone.
+	Scenario: Calculo por BMI
+		Given I am on the home page
+		When I fill in "altura" with "170"
+		And I select "cm" in "unidad"
+		And I click "Calcular peso ideal"
+		Then I should see "Su peso ideal es:"
+		And I should see "BMI"
+		And I should see "127.44"
+		And I should see "127.44"
+		And I should see "57.81"
+		And I should see "57.81"

@@ -1,11 +1,17 @@
-#language: es
-Característica: Calculo del peso ideal Miller
-	Como usuario 
-	Quiero usar la formula Miller 
-	Para calcular mi peso ideal.
+#language: en
+Feature: Calculo por Miller
+	In order to calculate my ideal weight
+	As a user 
+	I want to use the Miller formula
 
-	Escenario: Calculo del peso por Miller
-		Dado que un usuario quiere conocer su peso ideal por Miller 
-		Cuando la entrada de altura es valida 
-		Y esta en pulgadas 
-		Entonces el sistema debe calcular el peso para hombre y mujer segun la formula de Miller.
+	Scenario: Calculo por Miller
+		Given I am on the home page
+		When I fill in "altura" with "170"
+		And I select "cm" in "unidad"
+		And I click "Calcular peso ideal"
+		Then I should see "Su peso ideal es:"
+		And I should see "Miller"
+		And I should see "145.12"
+		And I should see "137.54"
+		And I should see "65.83"
+		And I should see "62.39"

@@ -1,11 +1,17 @@
-#language: es
-Característica: Calculo del peso ideal Robinson
-	Como usuario 
-	Quiero usar la formula Robinson 
-	Para calcular mi peso ideal.
+#language: en
+Feature: Calculo por Robinson
+	In order to calculate my ideal weight
+	As a user 
+	I want to use the Robinson formula
 
-	Escenario: Calculo del peso por Robinson
-		Dado que un usuario quiere conocer su peso ideal por Robinson 
-		Cuando la entrada de altura es valida 
-		Y esta en pulgadas 
-		Entonces el sistema debe calcular el peso para hombre y mujer segun la formula de Robinson
+	Scenario: Calculo por Robinson
+		Given I am on the home page
+		When I fill in "altura" with "170"
+		And I select "cm" in "unidad"
+		And I click "Calcular peso ideal"
+		Then I should see "Su peso ideal es:"
+		And I should see "Robinson"
+		And I should see "143.36"
+		And I should see "133.71"
+		And I should see "65.03"
+		And I should see "60.65"
